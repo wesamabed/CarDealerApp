@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="382dp"
+        android:layout_height="89dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="376dp"
+        android:layout_height="81dp"
+        android:layout_below="@id/editTextEmail"
+        android:layout_marginTop="16dp"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <CheckBox
+        android:id="@+id/checkboxRememberMe"
+        android:layout_width="162dp"
+        android:layout_height="67dp"
+        android:layout_below="@id/editTextPassword"
+        android:layout_marginTop="8dp"
+        android:text="Remember Me" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="119dp"
+        android:layout_height="61dp"
+        android:layout_below="@id/checkboxRememberMe"
+        android:layout_marginTop="16dp"
+        android:text="Login" />
+
+    <Button
+        android:id="@+id/btnToRegister"
+        android:layout_width="124dp"
+        android:layout_height="72dp"
+        android:layout_below="@id/btnLogin"
+        android:layout_marginTop="16dp"
+        android:text="Sign Up" />
+</RelativeLayout>

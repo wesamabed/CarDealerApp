@@ -1,0 +1,236 @@
+{
+    "France": {
+        "cities": [
+            "Paris",
+            "Marseille",
+            "Lyon",
+            "Toulouse"
+        ],
+        "area_code": "+33"
+    },
+    "Germany": {
+        "cities": [
+            "Berlin",
+            "Munich",
+            "Frankfurt",
+            "Hamburg"
+        ],
+        "area_code": "+49"
+    },
+    "Italy": {
+        "cities": [
+            "Rome",
+            "Milan",
+            "Naples",
+            "Turin"
+        ],
+        "area_code": "+39"
+    },
+    "Spain": {
+        "cities": [
+            "Madrid",
+            "Barcelona",
+            "Valencia",
+            "Seville"
+        ],
+        "area_code": "+34"
+    },
+    "Egypt": {
+        "cities": [
+            "Cairo",
+            "Alexandria",
+            "Giza",
+            "Luxor"
+        ],
+        "area_code": "+20"
+    },
+    "Saudi Arabia": {
+        "cities": [
+            "Riyadh",
+            "Jeddah",
+            "Mecca",
+            "Medina"
+        ],
+        "area_code": "+966"
+    },
+    "United Arab Emirates": {
+        "cities": [
+            "Dubai",
+            "Abu Dhabi",
+            "Sharjah",
+            "Al Ain"
+        ],
+        "area_code": "+971"
+    },
+    "Morocco": {
+        "cities": [
+            "Casablanca",
+            "Rabat",
+            "Marrakesh",
+            "Fes"
+        ],
+        "area_code": "+212"
+    },
+    "Algeria": {
+        "cities": [
+            "Algiers",
+            "Oran",
+            "Constantine",
+            "Annaba"
+        ],
+        "area_code": "+213"
+    },
+    "Bahrain": {
+        "cities": [
+            "Manama",
+            "Riffa",
+            "Muharraq",
+            "Hamad Town"
+        ],
+        "area_code": "+973"
+    },
+    "Comoros": {
+        "cities": [
+            "Moroni",
+            "Mutsamudu",
+            "Fomboni",
+            "Domoni"
+        ],
+        "area_code": "+269"
+    },
+    "Djibouti": {
+        "cities": [
+            "Djibouti City",
+            "Ali Sabieh",
+            "Tadjourah",
+            "Obock"
+        ],
+        "area_code": "+253"
+    },
+    "Iraq": {
+        "cities": [
+            "Baghdad",
+            "Basra",
+            "Erbil",
+            "Mosul"
+        ],
+        "area_code": "+964"
+    },
+    "Jordan": {
+        "cities": [
+            "Amman",
+            "Zarqa",
+            "Irbid",
+            "Aqaba"
+        ],
+        "area_code": "+962"
+    },
+    "Kuwait": {
+        "cities": [
+            "Kuwait City",
+            "Al Ahmadi",
+            "Hawalli",
+            "Al Farwaniyah"
+        ],
+        "area_code": "+965"
+    },
+    "Lebanon": {
+        "cities": [
+            "Beirut",
+            "Tripoli",
+            "Sidon",
+            "Tyre"
+        ],
+        "area_code": "+961"
+    },
+    "Libya": {
+        "cities": [
+            "Tripoli",
+            "Benghazi",
+            "Misrata",
+            "Bayda"
+        ],
+        "area_code": "+218"
+    },
+    "Mauritania": {
+        "cities": [
+            "Nouakchott",
+            "Nouadhibou",
+            "Nema",
+            "Kiffa"
+        ],
+        "area_code": "+222"
+    },
+    "Oman": {
+        "cities": [
+            "Muscat",
+            "Salalah",
+            "Sohar",
+            "Nizwa"
+        ],
+        "area_code": "+968"
+    },
+    "Palestine": {
+        "cities": [
+            "Jerusalem",
+            "Gaza",
+            "Hebron",
+            "Nablus"
+        ],
+        "area_code": "+970"
+    },
+    "Qatar": {
+        "cities": [
+            "Doha",
+            "Al Rayyan",
+            "Al Wakrah",
+            "Al Khor"
+        ],
+        "area_code": "+974"
+    },
+    "Somalia": {
+        "cities": [
+            "Mogadishu",
+            "Hargeisa",
+            "Bosaso",
+            "Galkayo"
+        ],
+        "area_code": "+252"
+    },
+    "Sudan": {
+        "cities": [
+            "Khartoum",
+            "Omdurman",
+            "Port Sudan",
+            "Kassala"
+        ],
+        "area_code": "+249"
+    },
+    "Syria": {
+        "cities": [
+            "Damascus",
+            "Aleppo",
+            "Homs",
+            "Latakia"
+        ],
+        "area_code": "+963"
+    },
+    "Tunisia": {
+        "cities": [
+            "Tunis",
+            "Sfax",
+            "Sousse",
+            "Ettadhamen"
+        ],
+        "area_code": "+216"
+    },
+    "Yemen": {
+        "cities": [
+            "Sana'a",
+            "Aden",
+            "Taiz",
+            "Al Hudaydah"
+        ],
+        "area_code": "+967"
+    }
+}
