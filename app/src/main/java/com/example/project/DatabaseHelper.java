@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -119,4 +120,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return exists;
     }
+
+    public String getUserPasswordHash(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + COLUMN_PASSWORD_HASH + " FROM " + TABLE_USERS + " WHERE " + COLUMN_EMAIL + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{email});
+
+        if (cursor.moveToFirst()) {
+            @SuppressLint("Range") String passwordHash = cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD_HASH));
+            cursor.close();
+            return passwordHash;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
 }

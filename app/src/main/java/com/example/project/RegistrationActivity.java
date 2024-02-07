@@ -1,53 +1,81 @@
 package com.example.project;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-import com.google.i18n.phonenumbers.PhoneNumberUtil;
-import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
-import com.google.i18n.phonenumbers.NumberParseException;
-import com.google.i18n.phonenumbers.PhoneNumberUtil;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
+import android.Manifest;
+import android.content.pm.PackageManager;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+
 
 public class RegistrationActivity extends AppCompatActivity {
+    private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
     private HashMap<String, String> countryAreaCodes;
     private HashMap<String, ArrayList<String>> countriesCitiesMap;
     private EditText etRegEmail, etRegFirstName, etRegLastName, etRegPassword, etRegConfirmPassword, etRegPhoneNumber, etRegAreaCode;
     private Spinner spinnerGender, spinnerCountry, spinnerCity;
     private Button btnRegister, btnToLogin;
+    private ImageView ivSelectedPhoto;
+    private Button btnSelectOrCapturePhoto;
+
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 2;
+    private Uri imageUri;
+    private StorageReference storageReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestPermissions();
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_registration);
-        //DatabaseHelper dbHelper = new DatabaseHelper(this);
-        //dbHelper.resetUsersTable();
         spinnerGender = findViewById(R.id.spinnerGender);
         spinnerCountry = findViewById(R.id.spinnerCountry);
         spinnerCity = findViewById(R.id.spinnerCity);
@@ -60,24 +88,146 @@ public class RegistrationActivity extends AppCompatActivity {
         etRegPhoneNumber = findViewById(R.id.etRegPhoneNumber);
         btnRegister = findViewById(R.id.btnRegister);
         btnToLogin = findViewById(R.id.btnToLogin);
-        populateGenderSpinner();
-        loadJsonData();
-        populateCountrySpinner();
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        ivSelectedPhoto = findViewById(R.id.ivSelectedPhoto);
+        btnSelectOrCapturePhoto = findViewById(R.id.btnSelectOrCapturePhoto);
+        storageReference = FirebaseStorage.getInstance().getReference();
+
+        btnSelectOrCapturePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                registerUser();
+            public void onClick(View v) {
+                // Implement the logic to open image selector or camera
+                selectImage();
             }
         });
 
-        btnToLogin.setOnClickListener(new View.OnClickListener() {
+        etRegPassword.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
-                startActivity(intent);
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                updatePasswordStrengthView(editable.toString());
             }
         });
+        populateGenderSpinner();
+        loadJsonData();
+        populateCountrySpinner();
+        btnRegister.setOnClickListener(view -> registerUser());
+
+        btnToLogin.setOnClickListener(view -> {
+            Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+            startActivity(intent);
+        });
     }
+
+    private void selectImage() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+        } else {
+            final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
+            AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationActivity.this);
+            builder.setTitle("Add Photo!");
+            builder.setItems(options, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int item) {
+                    if (options[item].equals("Take Photo")) {
+                        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        if (takePicture.resolveActivity(getPackageManager()) != null) {
+                            startActivityForResult(takePicture, REQUEST_IMAGE_CAPTURE);
+                        }
+                    } else if (options[item].equals("Choose from Gallery")) {
+                        Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(pickPhoto, PICK_IMAGE_REQUEST);
+                    } else if (options[item].equals("Cancel")) {
+                        dialog.dismiss();
+                    }
+                }
+            });
+            builder.show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == PICK_IMAGE_REQUEST) {
+                imageUri = data.getData();
+                ivSelectedPhoto.setImageURI(imageUri);
+            } else if (requestCode == REQUEST_IMAGE_CAPTURE) {
+                Bundle extras = data.getExtras();
+                Bitmap imageBitmap = (Bitmap) extras.get("data");
+                ivSelectedPhoto.setImageBitmap(imageBitmap);
+// Save the bitmap to a file and get its URI
+                imageUri = getImageUri(getApplicationContext(), imageBitmap);
+            }
+        }
+    }
+
+    private Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
+
+
+    private void uploadImageAndRegister(User user) {
+        if (imageUri != null) {
+            StorageReference fileReference = storageReference.child("images/" + UUID.randomUUID().toString());
+            fileReference.putFile(imageUri)
+                    .addOnSuccessListener(taskSnapshot -> fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
+                        String imageUrl = uri.toString();
+                        user.setImageUrl(imageUrl);
+                        registerUserInFirestore(user);
+                    }))
+                    .addOnFailureListener(e -> Toast.makeText(RegistrationActivity.this, "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+        } else {
+            registerUserInFirestore(user);
+        }
+    }
+
+    private void registerUserInFirestore(User user) {
+        db.collection("users").document(user.getEmail()).set(user)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(RegistrationActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+                    mAuth.signOut();
+                    finish();
+                })
+                .addOnFailureListener(e -> Toast.makeText(RegistrationActivity.this, "Failed to save user details: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+    }
+
+
+    private void requestPermissions() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            }, 100);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 0) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                selectImage();
+            } else {
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+
 
     private void registerUser() {
         String firstName = etRegFirstName.getText().toString().trim();
@@ -93,19 +243,19 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
         // Validate Name
-        if (!isValidName(firstName) || !isValidName(lastName)) {
+        if (!Validation.isValidName(firstName) || !Validation.isValidName(lastName)) {
             Toast.makeText(this, "First and last names must be at least 3 characters long", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // Validate Email
-        if (!isValidEmail(email)) {
+        if (!Validation.isValidEmail(email)) {
             Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // Validate Password
-        if (!isValidPassword(password)) {
+        if (!Validation.isValidPassword(password)) {
             Toast.makeText(this, "Password does not meet the criteria", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -117,76 +267,36 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         // Validate Phone Number
-        if (!isValidPhoneNumber(dialCode, phoneNumber)) {
+        if (!Validation.isValidPhoneNumber(dialCode, phoneNumber)) {
             Toast.makeText(this, "Invalid phone number format", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // Hash Password
-        String hashedPassword = hashPassword(password);
+        String hashedPassword = Validation.hashPassword(password);
         if (hashedPassword == null) {
             Toast.makeText(this, "Error in password processing", Toast.LENGTH_SHORT).show();
             return;
         }
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
 
-        // Save User Data to Database
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-        if (dbHelper.checkEmailExists(email)) {
-            Toast.makeText(this, "Email already in use", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        boolean isAdded = dbHelper.addUser(new User(firstName, lastName, email, hashedPassword, phoneNumber, Gender, Country, City));
-        if (isAdded) {
-            Toast.makeText(this, "User registered successfully", Toast.LENGTH_SHORT).show();
-            dbHelper.printAllUsersToLogcat(); // Call this method to print all users
-        } else {
-            Toast.makeText(this, "User registration failed or email already exists", Toast.LENGTH_SHORT).show();
-        }
+                        // User registration successful, update Firestore with additional details
+                        User newUser = new User(firstName, lastName, email, phoneNumber, Gender, Country, City,"", false, false, new ArrayList<>(), new ArrayList<>());
+                        uploadImageAndRegister(newUser);
+
+                    } else {
+                        if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+// If email already in use, display a message to the user.
+                            Toast.makeText(RegistrationActivity.this, "Email already in use. Please use a different email.", Toast.LENGTH_SHORT).show();
+                        } else {
+// Other errors
+                            Toast.makeText(RegistrationActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
-
-    private boolean isValidName(String name) {
-        return name != null && name.length() >= 3;
-    }
-
-    private boolean isValidEmail(String email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    private boolean isValidPassword(String password) {
-        String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{5,}$";
-        return password.matches(passwordPattern);
-    }
-
-
-    private String getCountryIsoCode(String dialCode) {
-        PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
-        for (String region : phoneUtil.getSupportedRegions()) {
-            int code = phoneUtil.getCountryCodeForRegion(region);
-            Log.d("TAG","+"+code);
-            if (dialCode.equals("+" + code)) {
-                Log.d("TAG","+"+region);
-                return region;
-            }
-        }
-        return null;
-    }
-
-    private boolean isValidPhoneNumber(String dialCode, String phoneNumber) {
-        PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
-        try {
-            String countryCode = getCountryIsoCode(dialCode);
-            if (countryCode == null) {
-                Log.e("PhoneValidation", "Invalid dial code: " + dialCode);
-                return false;
-            }
-            PhoneNumber numberProto = phoneUtil.parse(phoneNumber, countryCode);
-            return phoneUtil.isValidNumber(numberProto);
-        } catch (NumberParseException e) {
-            Log.e("NumberParseException", "Error: " + e.toString());
-            return false;
-        }
-    }
-
 
 
     private void populateGenderSpinner() {
@@ -268,23 +378,32 @@ public class RegistrationActivity extends AppCompatActivity {
         }
     }
 
-    private String hashPassword(String password) {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(password.getBytes());
-            StringBuilder hexString = new StringBuilder();
 
-            for (byte b : hash) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) hexString.append('0');
-                hexString.append(hex);
-            }
+    private void updatePasswordStrengthView(String password) {
+        TextView passwordStrengthView = findViewById(R.id.tvPasswordStrength);
 
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
+        if (TextUtils.isEmpty(password)) {
+            passwordStrengthView.setText("");
+            passwordStrengthView.setTextColor(Color.BLACK);
+            return;
         }
+
+        String strength;
+        int strengthColor;
+
+        if (password.length() >= 10 && password.matches(".*[a-zA-Z]+.*") && password.matches(".*[0-9]+.*") && password.matches(".*[@#$%^&+=].*")) {
+            strength = "Strong";
+            strengthColor = Color.GREEN;
+        } else if (password.length() >= 6) {
+            strength = "Medium";
+            strengthColor = Color.YELLOW;
+        } else {
+            strength = "Weak";
+            strengthColor = Color.RED;
+        }
+
+        passwordStrengthView.setText(strength);
+        passwordStrengthView.setTextColor(strengthColor);
     }
-    // Additional methods for validation and database interactions
+
 }

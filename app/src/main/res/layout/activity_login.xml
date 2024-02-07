@@ -2,45 +2,63 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#A38DCC">
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="382dp"
-        android:layout_height="89dp"
+        android:layout_height="100dp"
+        android:background="#9D87C5"
+        android:backgroundTint="#A595C1"
         android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="376dp"
-        android:layout_height="81dp"
+        android:layout_height="100dp"
         android:layout_below="@id/editTextEmail"
         android:layout_marginTop="16dp"
+        android:background="#9D87C5"
+        android:backgroundTint="#A595C1"
         android:hint="Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textSize="24sp" />
 
     <CheckBox
         android:id="@+id/checkboxRememberMe"
         android:layout_width="162dp"
-        android:layout_height="67dp"
+        android:layout_height="100dp"
         android:layout_below="@id/editTextPassword"
         android:layout_marginTop="8dp"
         android:text="Remember Me" />
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="119dp"
-        android:layout_height="61dp"
+        android:layout_width="307dp"
+        android:layout_height="90dp"
         android:layout_below="@id/checkboxRememberMe"
-        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
         android:text="Login" />
 
     <Button
         android:id="@+id/btnToRegister"
-        android:layout_width="124dp"
-        android:layout_height="72dp"
+        android:layout_width="301dp"
+        android:layout_height="89dp"
         android:layout_below="@id/btnLogin"
-        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
         android:text="Sign Up" />
+
+    <Button
+        android:id="@+id/btnToRegisterCarDealer"
+        android:layout_width="299dp"
+        android:layout_height="88dp"
+        android:layout_below="@id/btnToRegister"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="Sign Up new CarDealer" />
 </RelativeLayout>

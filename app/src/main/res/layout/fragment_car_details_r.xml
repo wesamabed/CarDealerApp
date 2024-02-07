@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#A38DCC">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#9D87C5"
+        android:backgroundTint="#A595C1">
+
+        <ImageView
+            android:id="@+id/carDetailImageView"
+            android:layout_width="match_parent"
+            android:layout_height="164dp"
+            android:layout_marginBottom="2dp"
+            android:background="#A38DCC"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/carDetailNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:background="#A38DCC"
+            android:text="Car Name"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/carDetailTypeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:text="Car Type"
+            android:textSize="22sp"
+            android:background="#A38DCC"/>
+
+        <TextView
+            android:id="@+id/carDetailModelTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:background="#A38DCC"
+            android:text="Car Model"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/carDetailPriceTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:background="#A38DCC"
+            android:text="Price"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/carDetailFuelTypeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:text="Fuel Type"
+            android:textSize="22sp"
+            android:background="#A38DCC"/>
+
+        <TextView
+            android:id="@+id/carDetailKilometersTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:text="Kilometers"
+            android:textSize="22sp"
+            android:background="#A38DCC"/>
+        <TextView
+            android:id="@+id/CarDealerNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="CarDealer Name"
+            android:layout_marginTop="2dp"
+            android:textSize="22sp"
+            android:background="#A38DCC"/>
+        <TextView
+            android:id="@+id/ReservedTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:text="Reserved"
+            android:textSize="22sp"
+            android:background="#A38DCC"/>
+
+        <TextView
+            android:id="@+id/reservationFromTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:text="reservationFrom"
+            android:textSize="22sp"
+            android:background="#A38DCC"/>
+
+        <TextView
+            android:id="@+id/reservationToTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:text="reservationTo"
+            android:textSize="22sp"
+            android:background="#A38DCC"/>
+
+        <!-- Car Dealer Contact Information -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="2dp"
+                android:src="@android:drawable/ic_dialog_dialer"
+                android:background="#A38DCC"/>
+
+            <TextView
+                android:id="@+id/carDetailDealerPhoneTextView"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:text="Dealer Phone: SAMPLE_PHONE"
+                android:textSize="20sp"
+                android:background="#A38DCC"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="10dp"
+                android:src="@android:drawable/ic_dialog_map"
+                android:background="#A38DCC"/>
+
+            <TextView
+                android:id="@+id/carDetailDealerLocationTextView"
+                android:layout_width="0dp"
+                android:layout_height="61dp"
+                android:layout_weight="1"
+                android:text="Dealer Location: SAMPLE_LOCATION"
+                android:textSize="20sp"
+                android:background="#A38DCC"/>
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+</ScrollView>

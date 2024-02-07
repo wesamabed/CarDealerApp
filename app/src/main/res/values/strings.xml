@@ -6,6 +6,7 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="filter">Filter</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -47,4 +48,16 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    <string-array name="spinnerFuelType">
+        <item>Gasoline</item>
+        <item>Electric</item>
+        <item>Hybrid</item>
+        <item>Diesel</item>
+        <item>ALL</item>
+    </string-array>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="photo">Selected Photo</string>
+    <string name="select_or_capture_photo">Select or Capture Photo</string>
+
 </resources>

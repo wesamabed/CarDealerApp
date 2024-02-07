@@ -1,5 +1,7 @@
 package com.example.project;
 
+import java.util.List;
+
 public class User {
     private String firstName;
     private String lastName;
@@ -9,17 +11,52 @@ public class User {
     private String gender;
     private String country;
     private String city;
+    private String ImageUrl;
+    private boolean isAdmin;
+    private boolean isCarDealer;
+    private List<String> favoriteCarIds;
+    private List<String> reservedCarIds;
 
-
-    public User(String firstName, String lastName, String email, String passwordHash, String phone_number, String gender, String country, String city) {
+    public User(String firstName, String lastName, String email, String phone_number, String gender, String country, String city, String ImageUrl,  boolean isAdmin, boolean isCarDealer, List<String> favoriteCarIds, List<String> reservedCarIds) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.passwordHash = passwordHash;
         this.phone_number = phone_number;
         this.gender = gender;
         this.country = country;
         this.city = city;
+        this.ImageUrl = ImageUrl;
+        this.isAdmin = isAdmin;
+        this.isCarDealer = isCarDealer;
+        this.favoriteCarIds = favoriteCarIds;
+        this.reservedCarIds = reservedCarIds;
+
+    }
+    public User() {}
+
+    public String getImageUrl() {
+        return ImageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        ImageUrl = imageUrl;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+
+    public boolean isCarDealer() {
+        return isCarDealer;
+    }
+
+    public void setCarDealer(boolean carDealer) {
+        isCarDealer = carDealer;
     }
 
     public String getFirstName() {
@@ -86,6 +123,22 @@ public class User {
         this.city = city;
     }
 
+    public List<String> getFavoriteCarIds() {
+        return favoriteCarIds;
+    }
+
+    public void setFavoriteCarIds(List<String> favoriteCarIds) {
+        this.favoriteCarIds = favoriteCarIds;
+    }
+
+    public List<String> getReservedCarIds() {
+        return reservedCarIds;
+    }
+
+    public void setReservedCarIds(List<String> reservedCarIds) {
+        this.reservedCarIds = reservedCarIds;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -97,6 +150,10 @@ public class User {
                 ", gender='" + gender + '\'' +
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
+                ", isAdmin=" + isAdmin +
+                ", isCarDealer=" + isCarDealer +
+                ", favoriteCarIds=" + favoriteCarIds +
+                ", reservedCarIds=" + reservedCarIds +
                 '}';
     }
 }

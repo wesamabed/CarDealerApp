@@ -1,0 +1,170 @@
+[
+    {
+        "id": "2",
+        "name": "Jeep Grand Cherokee",
+        "model": "2022",
+        "price": 400.0,
+        "imageResourceId": 1
+    },
+    {
+        "id": "3",
+        "name": "Jeep Wrangler",
+        "model": "2022",
+        "price": 350.0,
+        "imageResourceId": 2
+    },
+    {
+        "id": "4",
+        "name": "Dodge Grand Caravan",
+        "model": "2022",
+        "price": 300.0,
+        "imageResourceId": 3
+    },
+    {
+        "id": "5",
+        "name": "Tesla Model 3",
+        "model": "2022",
+        "price": 450.0,
+        "imageResourceId": 4
+    },
+    {
+        "id": "6",
+        "name": "Lamborghini Aventador",
+        "model": "2022",
+        "price": 5000.0,
+        "imageResourceId": 5
+    },
+    {
+        "id": "7",
+        "name": "Tesla Model Y",
+        "model": "2022",
+        "price": 550.0,
+        "imageResourceId": 6
+    },
+    {
+        "id": "8",
+        "name": "Ford Mustang",
+        "model": "2022",
+        "price": 400.0,
+        "imageResourceId": 7
+    },
+    {
+        "id": "9",
+        "name": "Ford Fiesta",
+        "model": "2022",
+        "price": 200.0,
+        "imageResourceId": 8
+    },
+    {
+        "id": "10",
+        "name": "Alpine",
+        "model": "2022",
+        "price": 600.0,
+        "imageResourceId": 9
+    },
+    {
+        "id": "11",
+        "name": "Tesla Roadster",
+        "model": "2022",
+        "price": 1000.0,
+        "imageResourceId": 10
+    },
+    {
+        "id": "12",
+        "name": "Honda Accord",
+        "model": "2022",
+        "price": 300.0,
+        "imageResourceId": 11
+    },
+    {
+        "id": "13",
+        "name": "Tesla Model S",
+        "model": "2022",
+        "price": 600.0,
+        "imageResourceId": 12
+    },
+    {
+        "id": "14",
+        "name": "Toyota Prius",
+        "model": "2022",
+        "price": 250.0,
+        "imageResourceId": 13
+    },
+    {
+        "id": "15",
+        "name": "Jeep Grand Cherokee",
+        "model": "2022",
+        "price": 400.0,
+        "imageResourceId": 14
+    },
+    {
+        "id": "16",
+        "name": "Lamborghini Mercielago",
+        "model": "2022",
+        "price": 8000.0,
+        "imageResourceId": 15
+    },
+    {
+        "id": "17",
+        "name": "Lamborghini Countach",
+        "model": "2022",
+        "price": 7500.0,
+        "imageResourceId": 16
+    },
+    {
+        "id": "18",
+        "name": "Jeep Grand Cherokee",
+        "model": "2022",
+        "price": 400.0,
+        "imageResourceId": 17
+    },
+    {
+        "id": "19",
+        "name": "Ford Expedition",
+        "model": "2022",
+        "price": 450.0,
+        "imageResourceId": 18
+    },
+    {
+        "id": "20",
+        "name": "Tesla Model 3",
+        "model": "2022",
+        "price": 450.0,
+        "imageResourceId": 19
+    },
+    {
+        "id": "21",
+        "name": "Honda Civic",
+        "model": "2022",
+        "price": 280.0,
+        "imageResourceId": 20
+    },
+    {
+        "id": "22",
+        "name": "Honda Element",
+        "model": "2022",
+        "price": 320.0,
+        "imageResourceId": 21
+    },
+    {
+        "id": "23",
+        "name": "Unknown Car",
+        "model": "Unknown",
+        "price": 100.0,
+        "imageResourceId": 22
+    },
+    {
+        "id": "24",
+        "name": "Chevrolet Volt",
+        "model": "2022",
+        "price": 300.0,
+        "imageResourceId": 23
+    },
+    {
+        "id": "25",
+        "name": "Volkswagen Volks",
+        "model": "2022",
+        "price": 220.0,
+        "imageResourceId": 24
+    }
+]

@@ -2,12 +2,33 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#A38DCC"
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#9D87C5"
+        android:backgroundTint="#A595C1">
+
+        <!-- Image View for Displaying Selected Photo -->
+        <ImageView
+            android:id="@+id/ivSelectedPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@android:drawable/ic_menu_gallery"
+            android:contentDescription="@string/photo"
+            android:scaleType="centerCrop"/>
+
+        <!-- Button for Selecting or Capturing Photo -->
+        <Button
+            android:id="@+id/btnSelectOrCapturePhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_or_capture_photo"
+            android:layout_gravity="center_horizontal"/>
 
         <!-- Email Field -->
         <EditText
@@ -15,7 +36,8 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:background="#A38DCC"/>
 
         <!-- First Name Field -->
         <EditText
@@ -31,7 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:hint="Last Name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:background="#A38DCC"/>
 
         <!-- Password Field -->
         <EditText
@@ -47,16 +70,30 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:hint="Confirm Password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:background="#A38DCC"/>
+
+        <TextView
+            android:id="@+id/tvPasswordStrength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Password Strength"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/etRegAreaCode"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:hint="Area Code"
-            android:inputType="text"
+            android:layout_weight="1"
+            android:background="#A38DCC"
             android:editable="false"
             android:focusable="false"
-            android:layout_weight="1"/>
+            android:hint="Area Code"
+            android:inputType="text" />
 
         <!-- Phone Number Field -->
         <EditText

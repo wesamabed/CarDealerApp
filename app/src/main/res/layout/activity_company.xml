@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#A38DCC">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#9D87C5"
+        android:backgroundTint="#A595C1">
+
+        <!-- Image View for Displaying Selected Photo -->
+        <ImageView
+            android:id="@+id/ivSelectedPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@android:drawable/ic_menu_gallery"
+            android:contentDescription="@string/photo"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Button for Selecting or Capturing Photo -->
+        <Button
+            android:id="@+id/btnSelectOrCapturePhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_or_capture_photo"
+            android:layout_gravity="center_horizontal"/>
+
+
+
+
+
+
+        <EditText
+            android:id="@+id/etCarDealerId"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="Car Dealer Company Name"
+            android:layout_marginTop="8dp"
+            />
+
+        <EditText
+            android:id="@+id/etCarDealerLocation"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="Car Dealer Company Location"
+            android:layout_marginTop="8dp"
+            />
+
+
+        <EditText
+            android:id="@+id/etRegAreaCode"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="Area Code"
+            android:inputType="text"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Phone Number Field -->
+        <EditText
+            android:id="@+id/etRegPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:layout_marginTop="8dp"/>
+
+
+
+        <!-- Country Spinner -->
+        <Spinner
+            android:id="@+id/spinnerCountry"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+
+        <!-- City Spinner -->
+        <Spinner
+            android:id="@+id/spinnerCity"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+
+        <!-- Register Button -->
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register" />
+
+
+
+    </LinearLayout>
+</ScrollView>

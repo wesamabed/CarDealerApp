@@ -1,0 +1,126 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#A38DCC">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#9D87C5"
+        android:backgroundTint="#A595C1">
+
+        <!-- Profile Image -->
+        <ImageView
+            android:id="@+id/ivProfileImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#A38DCC"
+            android:src="@android:drawable/ic_menu_camera"
+            android:layout_gravity="center"
+            android:padding="8dp"/>
+
+        <!-- First Name Field -->
+        <EditText
+            android:id="@+id/etProfileFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="First Name"
+            android:inputType="textPersonName" />
+
+        <!-- Last Name Field -->
+        <EditText
+            android:id="@+id/etProfileLastName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Last Name"
+            android:inputType="textPersonName" />
+
+        <!-- Email Field -->
+        <EditText
+            android:id="@+id/etProfileEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+
+        <EditText
+            android:id="@+id/etRegAreaCode"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="Area Code"
+            android:inputType="text" />
+
+        <!-- Phone Number Field -->
+        <EditText
+            android:id="@+id/etRegPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Phone Number"
+            android:inputType="phone" />
+
+        <!-- Gender Spinner -->
+        <Spinner
+            android:id="@+id/spinnerGender"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <!-- Country Spinner -->
+        <Spinner
+            android:id="@+id/spinnerCountry"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <!-- City Spinner -->
+        <Spinner
+            android:id="@+id/spinnerCity"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+
+        <!-- Password Update Button -->
+        <Button
+            android:id="@+id/btnChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Change Password" />
+
+        <!-- Update Profile Button -->
+        <Button
+            android:id="@+id/btnUpdateProfile"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Update Profile" />
+
+        <!-- Clear Favorites Button -->
+        <Button
+            android:id="@+id/btnClearFavorites"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Clear Favorites" />
+
+        <!-- Clear Reservations Button -->
+        <Button
+            android:id="@+id/btnClearReservations"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Clear Reservations" />
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/btnClearReservations"
+            android:layout_marginTop="16dp">
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>
+

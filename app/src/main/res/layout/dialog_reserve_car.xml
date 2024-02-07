@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A38DCC"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#9D87C5"
+        android:backgroundTint="#A595C1"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Car Details -->
+
+        <ImageView
+            android:id="@+id/carDetailImageView"
+            android:layout_width="match_parent"
+            android:layout_height="257dp"
+            android:layout_marginBottom="12dp"
+            android:background="#A38DCC"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/carNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A38DCC"
+            android:text="Car Name"
+            android:textSize="20sp"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/carDealerNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A38DCC"
+            android:text="Dealer Name"
+            android:textSize="20sp"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/carDealerPhoneTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A38DCC"
+            android:text="Dealer Phone"
+            android:textSize="20sp"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/pricePerDayTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A38DCC"
+            android:text="Price per Day: $0"
+            android:textSize="20sp"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Date Selection -->
+        <TextView
+            android:id="@+id/reservationFromTextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#A38DCC"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Reservation From"
+            android:textSize="20sp"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/reservationToTextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#A38DCC"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Reservation To"
+            android:textSize="20sp"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/totalPriceTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:background="#A38DCC"
+            android:text="Total Price: $0"
+            android:textSize="20sp"
+            />
+
+
+    </LinearLayout>
+</ScrollView>

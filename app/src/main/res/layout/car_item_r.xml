@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#9D87C5"
+    android:backgroundTint="#A595C1"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/carImageView"
+        android:layout_width="375dp"
+        android:layout_height="300dp"
+        android:background="#A38DCC"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/carNameTextView"
+        android:layout_width="375dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="#A38DCC"
+        android:text="Car Name"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/carTypeTextView"
+        android:layout_width="375dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:background="#A38DCC"
+        android:text="Car Type"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/carModelTextView"
+        android:layout_width="375dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:background="#A38DCC"
+        android:text="Car Model"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/carPriceTextView"
+        android:layout_width="375dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:background="#A38DCC"
+        android:text="Price"
+        android:textSize="22sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+</LinearLayout>

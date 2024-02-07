@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#9D87C5"
+    android:backgroundTint="#A595C1"
+    android:foregroundGravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <!-- Other UI elements for filtering, etc. -->
+    <EditText
+        android:id="@+id/PriceTextView"
+        android:layout_width="384dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="8dp"
+        android:hint="Price"
+        android:text="Price"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/ModelTextView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:hint="Model"
+        android:text="Model"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/NameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:hint="Name"
+        android:text="Name"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/KilometersTextView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:hint="Kilometers"
+        android:text="Kilometers"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinnerFuelType"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+    <CheckBox
+        android:id="@+id/checkboxReserved"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/editTextPassword"
+        android:layout_marginTop="8dp"
+        android:text="Not Reserved"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/buttonApplyFilters"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Apply Filters"
+        />
+
+
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_home" android:title="Profile" />
+    <item android:id="@+id/Delete_Customer" android:title="Delete Customer" />
+    <item android:id="@+id/nav_Add_Admin" android:title="Add Admin" />
+    <item android:id="@+id/View_All_Reserves" android:title="View All Reserves" />
+    <item android:id="@+id/nav_Add_Car" android:title="Add Car" />
+    <item android:id="@+id/Edit_Car" android:title="Edit Car" />
+    <item android:id="@+id/nav_edit_profile" android:title="Edit Profile" />
+    <item android:id="@+id/nav_logout" android:title="Logout" />
+</menu>
